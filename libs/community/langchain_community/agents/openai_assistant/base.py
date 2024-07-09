@@ -498,7 +498,7 @@ class OpenAIAssistantV2Runnable(OpenAIAssistantRunnable):
         params = {
             k: v
             for k, v in input.items()
-            if k in ("instructions", "model", "tools", "tool_resources", "run_metadata")
+            if k in ("instructions", "model", "tools", "tool_resources", "run_metadata", "max_prompt_tokens", "max_completion_tokens")
         }
         return self.client.beta.threads.runs.create(
             input["thread_id"],
@@ -510,7 +510,7 @@ class OpenAIAssistantV2Runnable(OpenAIAssistantRunnable):
         params = {
             k: v
             for k, v in input.items()
-            if k in ("instructions", "model", "tools", "run_metadata")
+            if k in ("instructions", "model", "tools", "run_metadata", "max_prompt_tokens", "max_completion_tokens")
         }
         if tool_resources := input.get("tool_resources"):
             thread["tool_resources"] = tool_resources
@@ -525,7 +525,7 @@ class OpenAIAssistantV2Runnable(OpenAIAssistantRunnable):
         params = {
             k: v
             for k, v in input.items()
-            if k in ("instructions", "model", "tools", "tool_resources" "run_metadata")
+            if k in ("instructions", "model", "tools", "tool_resources" "run_metadata", "max_prompt_tokens", "max_completion_tokens")
         }
         return await self.async_client.beta.threads.runs.create(
             input["thread_id"],
@@ -537,7 +537,7 @@ class OpenAIAssistantV2Runnable(OpenAIAssistantRunnable):
         params = {
             k: v
             for k, v in input.items()
-            if k in ("instructions", "model", "tools", "run_metadata")
+            if k in ("instructions", "model", "tools", "run_metadata", "max_prompt_tokens", "max_completion_tokens")
         }
         if tool_resources := input.get("tool_resources"):
             thread["tool_resources"] = tool_resources
